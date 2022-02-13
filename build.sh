@@ -33,6 +33,8 @@ cp -r gcc-git gcc-git-stage1
 
 cp -r libtool-git libtool-git-stage1
 
+cp -r lib32-libltd-git lib32-libltd-git-stage1
+
 # create stage 2 build dir
 
 cp -r glibc-git glibc-git-stage2
@@ -44,6 +46,8 @@ cp -r binutils-git binutils-git-stage2
 cp -r gcc-git gcc-git-stage2
 
 cp -r libtool-git libtool-git-stage2
+
+cp -r lib32-libltd-git lib32-libltd-git-stage2
 
 # build stage1
 

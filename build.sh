@@ -17,89 +17,77 @@ source=$(pwd)
 
 echo "${source}"
 
-# build
+# build linux-api-headers
 
-cd glibc-git && makepkg -si && cd ${source}
+cd linux-api-headers-git && makepkg -si && cd ${source}
 
-cd valgrind-git && makepkg -si && cd ${source}
+# creaye stage 1 build dir
 
-cd binutils-git && makepkg -si && cd ${source}
+cp -r glibc-git glibc-git-stage1
 
-cd gcc-git && makepkg -si && cd ${source}
+cp -r valgrind-git valgrind-git-stage1
 
-cd libtool-git && makepkg -si && cd ${source}
+cp -r binutils-git binutils-git-stage1
 
-cd lib32-libltd-git && makepkg -si && cd ${source}
+cp -r gcc-git gcc-git-stage1
 
-# move build package in old directory
+cp -r libtool-git libtool-git-stage1
 
-cp glibc-git glibc-git.old
+# create stage 2 build dir
 
-cp valgrind-git valgrind-git.old
+cp -r glibc-git glibc-git-stage2
 
-cp binutils-git binutils-git.old
+cp -r valgrind-git valgrind-git-stage2
 
-cp gcc-git binutils-git.old
+cp -r binutils-git binutils-git-stage2
 
-cp libtool-git binutils-git.old
+cp -r gcc-git gcc-git-stage2
 
-cp lib32-libltd-git lib32-libltd-git.old
+cp -r libtool-git libtool-git-stage2
 
-# cleanup original build dir
+# build stage1
 
-rm -rf glibc-git/*.pkg.tar.zst
-rm -rf glibc-git/pkg/
-rm -rf glibc-git/src/
+cd glibc-git-stage1 && makepkg -si --nocheck && cd ${source}
 
-rm -rf valgrind-git/*.pkg.tar.zst
-rm -rf valgrind-git/pkg/
-rm -rf valgrind-git/src/
+cd valgrind-git-stage1 && makepkg -si --nocheck && cd ${source}
 
-rm -rf binutils-git/*.pkg.tar.zst
-rm -rf binutils-git/pkg/
-rm -rf binutils-git/src/
+cd binutils-git-stage1 && makepkg -si --nocheck && cd ${source}
 
-rm -rf gcc-git/*.pkg.tar.zst
-rm -rf gcc-git/pkg/
-rm -rf gcc-git/src/
+cd gcc-git-stage1 && makepkg -si --nocheck && cd ${source}
 
-rm -rf libtool-git/*.pkg.tar.zst
-rm -rf libtool-git/pkg/
-rm -rf libtool-git/src/
+cd libtool-git-stage1 && makepkg -si --nocheck && cd ${source}
 
-rm -rf lib32-libltd-git/*.pkg.tar.zst
-rm -rf lib32-libltd-git/pkg/
-rm -rf lib32-libltd-git/src/
+cd lib32-libltd-git-stage1 && makepkg -si --nocheck && cd ${source}
 
-# recompile toolchain
+# build stage2
 
-cd glibc-git && makepkg -si && cd ${source}
+cd glibc-git-stage2 && makepkg -si --nocheck && cd ${source}
 
-cd valgrind-git && makepkg -si && cd ${source}
+cd valgrind-git-stage2 && makepkg -si --nocheck && cd ${source}
 
-cd binutils-git && makepkg -si && cd ${source}
+cd binutils-git-stage2 && makepkg -si --nocheck && cd ${source}
 
-cd gcc-git && makepkg -si && cd ${source}
+cd gcc-git-stage2 && makepkg -si --nocheck && cd ${source}
 
-cd libtool-git && makepkg -si && cd ${source}
+cd libtool-git-stage2 && makepkg -si --nocheck && cd ${source}
 
-cd lib32-libltd-git && makepkg -si && cd ${source}
+cd lib32-libltd-git-stage2 && makepkg -si --nocheck && cd ${source}
 
 # make a copy of every pkg in package dir
 
 mkdir -p package
 
-cp -v glibc-git/*.pkg.tar.zst package/
+cp -v glibc-git-stage2/*.pkg.tar.zst package/
 
-cp -v valgrind-git/*.pkg.tar.zst package/
+cp -v valgrind-git-stage2/*.pkg.tar.zst package/
 
-cp -v binutils-git/*.pkg.tar.zst package/
+cp -v binutils-git-stage2/*.pkg.tar.zst package/
 
-cp -v gcc-git/*.pkg.tar.zst package/
+cp -v gcc-git-stage2/*.pkg.tar.zst package/
 
-cp -v libtool-git/*.pkg.tar.zst package/
+cp -v libtool-git-stage2/*.pkg.tar.zst package/
 
-cp -v lib32-libltd-git/*.pkg.tar.zst package/
+cp -v lib32-libltd-git-stage2/*.pkg.tar.zst package/
 
 # clean build dir
 

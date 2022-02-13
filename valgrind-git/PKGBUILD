@@ -61,11 +61,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-fno-plt/}
 
   cd ${srcdir}/valgrind
-  ./configure --prefix=/usr \
-  --sysconfdir=/etc \ 
-  --localstatedir=/var \
-  --libexecdir=/usr/lib \
-  --mandir=/usr/share/man
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib --mandir=/usr/share/man
   make -j$(nproc)
   make -j$(nproc) -C docs man-pages
 }

@@ -49,7 +49,7 @@ prepare() {
   sed -i 's|sgml/docbook/xsl-stylesheets|xml/docbook/xsl-stylesheets-1.79.2-nons|' docs/Makefile.am
   
   # https://sourceware.org/git/?p=valgrind.git;a=commitdiff;h=1024237358
-  patch -p1 -i "${srcdir}"/valgrind-3.18.1-glibc-2.35.patch
+  #patch -p1 -i "${srcdir}"/valgrind-3.18.1-glibc-2.35.patch
 
   autoreconf -ifv
 }

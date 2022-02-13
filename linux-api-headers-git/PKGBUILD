@@ -1,0 +1,51 @@
+# _     _            _        _          _____
+#| |__ | | __ _  ___| | _____| | ___   _|___ /
+#| '_ \| |/ _` |/ __| |/ / __| |/ / | | | |_ \
+#| |_) | | (_| | (__|   <\__ \   <| |_| |___) |
+#|_.__/|_|\__,_|\___|_|\_\___/_|\_\\__, |____/
+#                                  |___/
+
+#Maintainer: blacksky3 <blacksky3@tuta.io> <https://github.com/blacksky3>
+#Credits: Giancarlo Razzolini <grazzolini@archlinux.org>
+#Credits: Frederik Schwan <freswa at archlinux dot org>
+#Credits: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+#Credits: Allan McRae <allan@archlinux.org>
+
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
+
+pkgname=linux-api-headers-git
+pkgver=5.17rc4.r0.g754e0b0e3560
+pkgrel=1
+pkgdesc='Kernel headers sanitized for use in userspace (git version)'
+arch=(any)
+url='https://www.gnu.org/software/libc'
+license=(GPL2)
+makedepends=(rsync)
+conflicts=(linux-api-headers)
+provides=("linux-api-headers=${pkgver}" linux-api-headers)
+source=(git+https://github.com/torvalds/linux.git)
+md5sums=(SKIP)
+
+pkgver(){
+  cd linux
+  #git describe --long --tags | sed 's/v//' | sed 's/-//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags | sed 's/-//' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/\.rc/rc/'
+}
+
+build(){
+  cd linux
+
+  make -j$(nproc) clean
+  make -j$(nproc) mrproper
+}
+
+package(){
+  cd linux
+
+  make -j$(nproc) INSTALL_HDR_PATH="$pkgdir/usr" headers_install
+
+  # use headers from libdrm
+  #rm -r "$pkgdir/usr/include/drm"
+}

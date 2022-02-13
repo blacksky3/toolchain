@@ -12,22 +12,22 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 
 pkgname=binutils-git
-pkgver=2.37.50.r107799.ga4b0231e179
+pkgver=2.38.50.r109026.gccbaaa36174
 pkgrel=1
-pkgdesc='A set of programs to assemble and manipulate binary and object files'
+pkgdesc='A set of programs to assemble and manipulate binary and object files (git version)'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
-groups=('base-devel')
+groups=(base-devel)
 depends=(glibc zlib libelf)
 checkdepends=(dejagnu debuginfod bc)
 optdepends=('debuginfod: for debuginfod server/client functionality')
-provides=(binutils)
+provides=(binutils "binutils=${pkgver}" binutils-git "binutils-git=${pkgver}")
 conflicts=(binutils-multilib binutils)
 replaces=(binutils-multilib)
-options=(staticlibs !distcc !ccache debug !buildflags)
-source=('binutils-gdb::git+https://sourceware.org/git/binutils-gdb.git')
-md5sums=('SKIP')
+options=(staticlibs !distcc !ccache debug)
+source=(binutils-gdb::git+https://sourceware.org/git/binutils-gdb.git)
+md5sums=(SKIP)
 
 pkgver(){
   cd binutils-gdb
@@ -56,7 +56,7 @@ build(){
     --with-bugurl=https://bugs.archlinux.org/ \
     --enable-cet \
     --enable-deterministic-archives \
-    --enable-gold \
+    --disable-gold \
     --enable-install-libiberty \
     --enable-ld=default \
     --enable-lto \

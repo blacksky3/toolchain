@@ -11,7 +11,7 @@
 #Credits: Allan McRae <allan@archlinux.org>
 
 pkgname=valgrind-git
-pkgver=3.18.1.r6.geaf052570
+pkgver=3.18.1.r80.g13427e2ae
 pkgrel=1
 pkgdesc='Tool to help find memory-management problems in programs (git version)'
 arch=('x86_64')
@@ -23,14 +23,14 @@ checkdepends=(procps-ng)
 optdepends=('lib32-glibc: 32-bit ABI support')
 replaces=(valgrind-multilib)
 conflicts=(valgrind)
-provides=(valgrind-multilib valgrind)
+provides=(valgrind-multilib valgrind "valgrind-multilib=${pkgver}" "valgrind=${pkgver}" valgrind-git "valgrind-git=${pkgver}")
 options=(!emptydirs !strip !buildflags)
-source=('git://sourceware.org/git/valgrind.git'
-        'valgrind-3.7.0-respect-flags.patch'
-        'valgrind-3.18.1-glibc-2.35.patch')
-md5sums=('SKIP'
-         'SKIP'
-         '60d1a99a2e1a404e61aee985e783fc80') #valgrind-3.18.1-glibc-2.35.patch
+source=(git://sourceware.org/git/valgrind.git
+        valgrind-3.7.0-respect-flags.patch
+        valgrind-3.18.1-glibc-2.35.patch)
+md5sums=(SKIP
+         SKIP
+         60d1a99a2e1a404e61aee985e783fc80) #valgrind-3.18.1-glibc-2.35.patch
 
 pkgver(){
   cd valgrind
@@ -47,7 +47,7 @@ prepare() {
   cd ${srcdir}/valgrind
   patch -Np1 < ../valgrind-3.7.0-respect-flags.patch
   sed -i 's|sgml/docbook/xsl-stylesheets|xml/docbook/xsl-stylesheets-1.79.2-nons|' docs/Makefile.am
-  
+
   # https://sourceware.org/git/?p=valgrind.git;a=commitdiff;h=1024237358
   #patch -p1 -i "${srcdir}"/valgrind-3.18.1-glibc-2.35.patch
 

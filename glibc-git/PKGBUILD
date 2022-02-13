@@ -5,7 +5,7 @@
 #|_.__/|_|\__,_|\___|_|\_\___/_|\_\\__, |____/
 #                                  |___/
 
-#Maintainer: kevall474 <kevall474@tuta.io> <https://github.com/kevall474>
+#Maintainer: blacksky3 <blacksky3@tuta.io> <https://github.com/blacksky3>
 #Credits: Giancarlo Razzolini <grazzolini@archlinux.org>
 #Credits: Frederik Schwan <freswa at archlinux dot org>
 #Credits: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -16,7 +16,7 @@
 
 pkgbase=glibc-git
 pkgname=(glibc-git lib32-glibc-git)
-pkgver=2.35
+pkgver=2.35.9000.r58.g7912236f4a
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
@@ -183,7 +183,7 @@ package_glibc-git(){
   backup=(etc/gai.conf
           etc/locale.gen
           etc/nscd.conf)
-  provides=(glibc "glibc=${pkgver}")
+  provides=(glibc "glibc=${pkgver}" glibc-git "glibc-git=${pkgver}")
   conflicts=(glibc)
 
   install -dm755 "$pkgdir/etc"
@@ -236,10 +236,9 @@ package_glibc-git(){
 
 package_lib32-glibc-git(){
   pkgdesc='GNU C Library (32-bit) (git version)'
-  #depends=("glibc=$pkgver")
-  depends=(glibc)
+  depends=("glibc=${pkgver}")
   options+=(!emptydirs)
-  provides=(lib32-glibc "lib32-glibc=${pkgver}")
+  provides=(lib32-glibc "lib32-glibc=${pkgver}" lib32-glibc-git "lib32-glibc-git=${pkgver}")
   conflicts=(lib32-glibc)
 
   cd ${srcdir}/lib32-glibc-build

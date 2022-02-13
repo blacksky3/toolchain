@@ -12,8 +12,6 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 
 pkgname=binutils-git
-# grap pkver
-#(cd binutils-gdb && cat binutils/configure | grep "PACKAGE_VERSION=")
 pkgver=2.37.50.r107799.ga4b0231e179
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files'

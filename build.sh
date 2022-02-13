@@ -60,8 +60,8 @@ rm -rf binutils-git/pkg/
 rm -rf binutils-git/src/
 
 rm -rf gcc-git/*.pkg.tar.zst
-m -rf gcc-git/pkg/
-m -rf gcc-git/src/
+rm -rf gcc-git/pkg/
+rm -rf gcc-git/src/
 
 rm -rf libtool-git/*.pkg.tar.zst
 rm -rf libtool-git/pkg/

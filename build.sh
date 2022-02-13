@@ -21,8 +21,6 @@ echo "${source}"
 
 cd glibc-git && makepkg -si && cd ${source}
 
-cd lib32-glibc-git && makepkg -si && cd ${source}
-
 cd valgrind-git && makepkg -si && cd ${source}
 
 cd binutils-git && makepkg -si && cd ${source}
@@ -36,8 +34,6 @@ cd lib32-libltd-git && makepkg -si && cd ${source}
 # move build package in old directory
 
 cp glibc-git glibc-git.old
-
-cp lib32-glibc-git glibc-git.old
 
 cp valgrind-git valgrind-git.old
 
@@ -53,33 +49,31 @@ cp lib32-libltd-git lib32-libltd-git.old
 
 rm -rf glibc-git/*.pkg.tar.zst
 rm -rf glibc-git/pkg/
-rm -rf glibc-git/src
-
-rm -rf lib32-glibc-git/*.pkg.tar.zst
-rm -rf lib32-glibc-git/pkg/
-rm -rf lib32-glibc-git/src
+rm -rf glibc-git/src/
 
 rm -rf valgrind-git/*.pkg.tar.zst
 rm -rf valgrind-git/pkg/
-rm -rf valgrind-git/src
+rm -rf valgrind-git/src/
 
 rm -rf binutils-git/*.pkg.tar.zst
 rm -rf binutils-git/pkg/
-rm -rf binutils-git/src
+rm -rf binutils-git/src/
+
+rm -rf gcc-git/*.pkg.tar.zst
+m -rf gcc-git/pkg/
+m -rf gcc-git/src/
 
 rm -rf libtool-git/*.pkg.tar.zst
 rm -rf libtool-git/pkg/
-rm -rf libtool-git/src
+rm -rf libtool-git/src/
 
 rm -rf lib32-libltd-git/*.pkg.tar.zst
 rm -rf lib32-libltd-git/pkg/
-rm -rf lib32-libltd-git/src
+rm -rf lib32-libltd-git/src/
 
 # recompile toolchain
 
 cd glibc-git && makepkg -si && cd ${source}
-
-cd lib32-glibc-git && makepkg -si && cd ${source}
 
 cd valgrind-git && makepkg -si && cd ${source}
 
@@ -96,8 +90,6 @@ cd lib32-libltd-git && makepkg -si && cd ${source}
 mkdir -p package
 
 cp -v glibc-git/*.pkg.tar.zst package/
-
-cp -v lib32-glibc-git/*.pkg.tar.zst package/
 
 cp -v valgrind-git/*.pkg.tar.zst package/
 

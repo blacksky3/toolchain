@@ -76,7 +76,8 @@ build(){
     --with-pic \
     --with-system-zlib
 
-  make -j$(nproc) -O tooldir=/usr
+  #make -j$(nproc) -O tooldir=/usr
+  make -j$(nproc) tooldir=/usr
 }
 
 check(){

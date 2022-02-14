@@ -113,7 +113,7 @@ build() {
   # https://github.com/gcc-mirror/gcc/blob/e8d68f0a456e00437587461d9645852272fb2322/configure#L7854
   #disable --enable-pgo-build=lto
 
-  #No support for GO Ada, D or ObjC ---> Allan McRae <allan@archlinux.org> <https://github.com/allanmcrae/toolchain>
+  #No support for Go Ada, D or ObjC ---> Allan McRae <allan@archlinux.org> <https://github.com/allanmcrae/toolchain>
   #No-one really needs those languages anyway.
   # disable go,ada,objc.objc++ and d
   #--enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \

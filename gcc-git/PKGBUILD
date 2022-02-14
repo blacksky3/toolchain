@@ -151,6 +151,8 @@ build() {
                        BOOT_CFLAGS="$CFLAGS" \
                        BOOT_LDFLAGS="$LDFLAGS" \
                        LDFLAGS_FOR_TARGET="$LDFLAGS"
+                       
+  #make -j$(nproc)
 
   # make documentation
   make -j$(nproc) -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen

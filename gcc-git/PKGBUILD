@@ -28,8 +28,8 @@ url='https://gcc.gnu.org'
 #makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git libxcrypt zstd)
 makedepends=(binutils libmpc doxygen lib32-glibc lib32-gcc-libs python git libxcrypt zstd)
 checkdepends=(dejagnu inetutils tcl expect python-pytest)
-options=(!emptydirs !lto debug)
-#options=(!emptydirs !lto !buildflags)
+#options=(!emptydirs !lto debug)
+options=(!emptydirs !lto)
 #_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 _libdir=usr/lib/gcc/$CHOST/12.0.1
 source=(#"git+https://gcc.gnu.org/git/gcc.git"
@@ -149,15 +149,16 @@ build() {
       gdc_include_dir=/usr/include/dlang/gdc
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
-  make -j$(nproc) -O STAGE1_CFLAGS="-O2" \
-                       BOOT_CFLAGS="$CFLAGS" \
-                       BOOT_LDFLAGS="$LDFLAGS" \
-                       LDFLAGS_FOR_TARGET="$LDFLAGS"
+  #make -j$(nproc) -O STAGE1_CFLAGS="-O2" \
+  #                     BOOT_CFLAGS="$CFLAGS" \
+  #                     BOOT_LDFLAGS="$LDFLAGS" \
+  #                     LDFLAGS_FOR_TARGET="$LDFLAGS"
                        
-  #make -j$(nproc)
+  make -j$(nproc)
 
   # make documentation
-  make -j$(nproc) -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+  #make -j$(nproc) -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+  make -j$(nproc) -C $CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
 check(){

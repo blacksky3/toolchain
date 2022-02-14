@@ -88,6 +88,10 @@ prepare(){
 
   # TODO - submit upstream once development reopens
   patch -p1 -i "${srcdir}"/fix-testsuite-default-pie.diff
+  
+  # fix testsuite failures with default SSP
+  # upstream commit 90c31ff339015ddd89ac519656fbd23a36ee6271
+  #patch -p1 -i "${srcdir}"/fix-testsuite-default-ssp.diff
 
   mkdir -p "$srcdir/gcc-build"
 }

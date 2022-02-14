@@ -17,11 +17,9 @@ source=$(pwd)
 
 echo "${source}"
 
-# build linux-api-headers
+# prepare
 
-cd linux-api-headers-git && makepkg -si && cd ${source}
-
-# creaye stage 1 build dir
+# create stage 1 build dir
 
 cp -r glibc-git glibc-git-stage1
 
@@ -48,6 +46,10 @@ cp -r gcc-git gcc-git-stage2
 cp -r libtool-git libtool-git-stage2
 
 cp -r lib32-libltdl-git lib32-libltd-git-stage2
+
+# build linux-api-headers
+
+cd linux-api-headers-git && makepkg -si && cd ${source}
 
 # build stage1
 

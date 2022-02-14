@@ -32,8 +32,6 @@ options=(!emptydirs !lto debug)
 #options=(!emptydirs !lto !buildflags)
 #_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 _libdir=usr/lib/gcc/$CHOST/12.0.1
-# _commit=6beb39ee6c465c21d0cc547fd66b445100cdcc35
-# source=(git://gcc.gnu.org/git/gcc.git#commit=$_commit
 source=(#"git+https://gcc.gnu.org/git/gcc.git"
         #The github mirror is much more reliable and faster than the official upstream git repo
         git+https://github.com/gcc-mirror/gcc.git

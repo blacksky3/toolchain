@@ -139,7 +139,7 @@ check(){
   cd ${srcdir}/gcc-build
 
   # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
-  sed -i '/maybe-check-target-libphobos \\/d' ${srcdir}/ Makefile
+  sed -i '/maybe-check-target-libphobos \\/d' ${srcdir}/ ${srcdir}/Makefile
 
   # do not abort on error as some are "expected"
   make -j$(nproc) -k check || true "$srcdir/gcc/contrib/test_summary"

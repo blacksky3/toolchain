@@ -90,6 +90,10 @@ prepare(){
 
 build(){
   cd ${srcdir}/gcc-build
+  
+  # Disable Debug flags
+  DEBUG_CFLAGS=${DEBUG_CFLAGS//}
+  DEBUG_CXXFLAGS=${DEBUG_CFLAGS//}
 
   # TODO: properly deal with the build/testsuite issues resulting from this
   CFLAGS=${CFLAGS/-Werror=format-security/}

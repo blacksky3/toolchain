@@ -106,6 +106,7 @@ build(){
       --libexecdir=/usr/lib \
       --mandir=/usr/share/man \
       --infodir=/usr/share/info \
+      --with-bugurl=https://bugs.archlinux.org/ \
       --enable-languages=c,c++,fortran,lto \
       --with-isl \
       --with-linker-hash-style=gnu \

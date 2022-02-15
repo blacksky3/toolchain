@@ -158,11 +158,9 @@ package_gcc-libs-git(){
   cd ${srcdir}/gcc-build
   make -j$(nproc) -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
-
-  shopt -s nullglob
+  
   for lib in libatomic \
-             [l]ibgfortran \
-             [l]ibgo \
+             libgfortran \
              libgomp \
              libitm \
              libquadmath \
@@ -171,7 +169,6 @@ package_gcc-libs-git(){
              libvtv; do
     make -j$(nproc) -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
-  shopt -u nullglob
 
   make -j$(nproc) -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
@@ -319,10 +316,9 @@ package_lib32-gcc-libs-git(){
   make -j$(nproc) -C $CHOST/32/libgcc DESTDIR="$pkgdir" install-shared
   rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
 
-  shopt -s nullglob
   for lib in libatomic \
-             [l]ibgfortran \
-             [l]ibgo \
+             libgfortran \
+             libgo \
              libgomp \
              libitm \
              libquadmath \
@@ -331,7 +327,6 @@ package_lib32-gcc-libs-git(){
              libvtv; do
     make -j$(nproc) -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
-  shopt -u nullglob
 
   # remove files provided by gcc-libs
   rm -rf "$pkgdir"/usr/lib

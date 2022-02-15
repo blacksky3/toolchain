@@ -70,10 +70,10 @@ prepare(){
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" ${srcdir}/{libiberty,gcc}/configure
 
   # D hacks
-  patch -Np1 -i "$srcdir/gdc_phobos_path.patch"
+  #patch -Np1 -i "$srcdir/gdc_phobos_path.patch"
 
   # Reproducible gcc-ada
-  patch -Np0 < "$srcdir/gcc-ada-repro.patch"
+  #patch -Np0 < "$srcdir/gcc-ada-repro.patch"
 
   # configure.ac: When adding -Wno-format, also add -Wno-format-security
   patch -Np0 < "$srcdir/gcc11-Wno-format-security.patch"

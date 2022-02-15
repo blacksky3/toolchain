@@ -120,12 +120,14 @@ build(){
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
       --enable-linker-build-id \
+      --enable-lto \
+      --enable-multilib \
       --enable-plugin \
       --enable-shared \
       --enable-threads=posix \
       --disable-libssp \
       --disable-libstdcxx-pch \
-      --disable-multilib \
+      --disable-libunwind-exceptions \
       --disable-werror
 
   make -j$(nproc) STAGE1_CFLAGS="-O2" \

@@ -64,7 +64,7 @@ prepare(){
   sed -i 's@\./fixinc\.sh@-c true@' ${srcdir}/gcc/Makefile.in
 
   # Arch Linux installs x86_64 libraries /lib
-  sed -i '/m64=/s/lib64/lib/' ${srcdir}/gcc/config/i386/t-linux64
+  sed -i '/m64=/s/lib64/lib/' ${srcdir}/gcc/gcc/config/i386/t-linux64
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" ${srcdir}/{libiberty,gcc}/configure

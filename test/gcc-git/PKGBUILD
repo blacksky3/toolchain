@@ -67,7 +67,7 @@ prepare(){
   sed -i '/m64=/s/lib64/lib/' ${srcdir}/gcc/gcc/config/i386/t-linux64
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" ${srcdir}/{libiberty,gcc}/configure
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" ${srcdir}/gcc/{libiberty,gcc}/configure
 
   # D hacks
   #patch -Np1 -i "$srcdir/gdc_phobos_path.patch"
@@ -89,7 +89,7 @@ prepare(){
 }
 
 build(){
-  ${srcdir}/cd gcc-build
+  cd ${srcdir}/gcc-build
 
   # TODO: properly deal with the build/testsuite issues resulting from this
   CFLAGS=${CFLAGS/-Werror=format-security/}

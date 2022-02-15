@@ -325,7 +325,6 @@ package_lib32-gcc-libs-git(){
 
   for lib in libatomic \
              libgfortran \
-             libgo \
              libgomp \
              libitm \
              libquadmath \

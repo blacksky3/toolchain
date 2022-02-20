@@ -1,3 +1,8 @@
+post_install() {
+  # set default en_US.UTF-8
+  sudo localectl set-locale LANG=en_US.UTF-8
+}
+
 post_upgrade() {
   locale-gen
 

@@ -69,11 +69,11 @@ cd gcc-git-stage1 && makepkg -si --nocheck && cd ${source}
 
 # build stage2
 
-cd glibc-stage2 && makepkg -si --nocheck && cd ${source}
+cd glibc-stage2 && makepkg -si && cd ${source}
 
-cd binutils-stage2 && makepkg -si --nocheck && cd ${source}
+cd binutils-stage2 && makepkg -si && cd ${source}
 
-cd gcc-git-stage2 && makepkg -si --nocheck && cd ${source}
+cd gcc-git-stage2 && makepkg -si && cd ${source}
 
 # make a copy of every pkg in package dir
 

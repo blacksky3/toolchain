@@ -145,11 +145,9 @@ build(){
 check(){
   cd ${srcdir}/gcc-build
 
-  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
-  sed -i '/maybe-check-target-libphobos \\/d' ${srcdir}/ ${srcdir}/Makefile
-
-  # do not abort on error as some are "expected"
-  make -j$(nproc) -k check || true "$srcdir/gcc/contrib/test_summary"
+  # some testsuite failures are "expected" - see README.md for details
+  make -j$(nproc) -O -k check || :
+  "$srcdir/gcc/contrib/test_summary"
 }
 
 package_gcc-libs-git(){

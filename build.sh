@@ -19,33 +19,41 @@ echo "${source}"
 
 # prepare
 
+# makepkg --verifysource to grap same same git version for package
+
+cd glibc && makepkg --verifysource && cd ${source}
+
+cd binutils && makepkg --verifysource && cd ${source}
+
+cd gcc-git && makepkg --verifysource && cd ${source}
+
 # create stage 1 build dir
 
-cp -r glibc-git glibc-git-stage1
+if ! dir glibc-stage1; then
+  cp -r glibc glibc-stage1
+fi
 
-cp -r valgrind-git valgrind-git-stage1
+if ! dir binutils-stage1; then
+  cp -r binutils binutils-stage1
+fi
 
-cp -r binutils-git binutils-git-stage1
-
-cp -r gcc-git gcc-git-stage1
-
-cp -r libtool-git libtool-git-stage1
-
-cp -r lib32-libltdl-git lib32-libltd-git-stage1
+if ! dir gcc-git-stage1; then
+  cp -r gcc-git gcc-git-stage1
+fi
 
 # create stage 2 build dir
 
-cp -r glibc-git glibc-git-stage2
+if ! dir glibc-stage2; then
+  cp -r glibc glibc-stage2
+fi
 
-cp -r valgrind-git valgrind-git-stage2
+if ! dir binutils-stage2; then
+  cp -r binutils binutils-stage2
+fi
 
-cp -r binutils-git binutils-git-stage2
-
-cp -r gcc-git gcc-git-stage2
-
-cp -r libtool-git libtool-git-stage2
-
-cp -r lib32-libltdl-git lib32-libltd-git-stage2
+if ! dir gcc-git-stage2; then
+  cp -r gcc-git gcc-git-stage2
+fi
 
 # build linux-api-headers
 
@@ -53,47 +61,33 @@ cd linux-api-headers-git && makepkg -si && cd ${source}
 
 # build stage1
 
-cd glibc-git-stage1 && makepkg -si --nocheck && cd ${source}
+cd glibc-stage1 && makepkg -si --nocheck && cd ${source}
 
-cd valgrind-git-stage1 && makepkg -si --nocheck && cd ${source}
-
-cd binutils-git-stage1 && makepkg -si --nocheck && cd ${source}
+cd binutils-stage1 && makepkg -si --nocheck && cd ${source}
 
 cd gcc-git-stage1 && makepkg -si --nocheck && cd ${source}
 
-cd libtool-git-stage1 && makepkg -si --nocheck && cd ${source}
-
-cd lib32-libltdl-git-stage1 && makepkg -si --nocheck && cd ${source}
-
 # build stage2
 
-cd glibc-git-stage2 && makepkg -si --nocheck && cd ${source}
+cd glibc-stage2 && makepkg -si --nocheck && cd ${source}
 
-cd valgrind-git-stage2 && makepkg -si --nocheck && cd ${source}
-
-cd binutils-git-stage2 && makepkg -si --nocheck && cd ${source}
+cd binutils-stage2 && makepkg -si --nocheck && cd ${source}
 
 cd gcc-git-stage2 && makepkg -si --nocheck && cd ${source}
-
-cd libtool-git-stage2 && makepkg -si --nocheck && cd ${source}
-
-cd lib32-libltdl-git-stage2 && makepkg -si --nocheck && cd ${source}
 
 # make a copy of every pkg in package dir
 
 mkdir -p package
 
-cp -v glibc-git-stage2/*.pkg.tar.zst package/
+cp -v linux-api-headers-git/*.pkg.tar.zst package/
 
-cp -v valgrind-git-stage2/*.pkg.tar.zst package/
+cp -v glibc-stage2/*.pkg.tar.zst package/
 
-cp -v binutils-git-stage2/*.pkg.tar.zst package/
+cp -v binutils-stage2/*.pkg.tar.zst package/
 
 cp -v gcc-git-stage2/*.pkg.tar.zst package/
 
 cp -v libtool-git-stage2/*.pkg.tar.zst package/
-
-cp -v lib32-libltdl-git-stage2/*.pkg.tar.zst package/
 
 # clean build dir
 

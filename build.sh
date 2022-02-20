@@ -89,8 +89,6 @@ cp -v binutils-stage2/*.pkg.tar.zst package/
 
 cp -v gcc-git-stage2/*.pkg.tar.zst package/
 
-cp -v libtool-git-stage2/*.pkg.tar.zst package/
-
 # clean build dir
 
 rm -rf */src/

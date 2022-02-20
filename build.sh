@@ -21,6 +21,8 @@ echo "${source}"
 
 # makepkg --verifysource to grap same version for package stage1/stage2 build
 
+cd linux-api-headers-git && makepkg --verifysource && cd ${source}
+
 cd glibc && makepkg --verifysource && cd ${source}
 
 cd binutils && makepkg --verifysource && cd ${source}

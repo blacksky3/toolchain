@@ -15,7 +15,7 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname=(gcc-git gcc-libs-git gcc-fortran-git lib32-gcc-libs-git)
+pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git lib32-gcc-libs-git)
 pkgver=12.0.1.r191658.g8e84b2b37a5
 _islver=0.24
 pkgrel=1
@@ -111,7 +111,7 @@ build(){
       --mandir=/usr/share/man \
       --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,fortran,lto \
+      --enable-languages=c,c++,fortran,lto,objc,obj-c++ \
       --with-isl \
       --with-linker-hash-style=gnu \
       --with-system-zlib \
@@ -300,6 +300,25 @@ package_gcc-fortran-git(){
   install -Dm755 gcc/f951 "$pkgdir/${_libdir}/f951"
 
   ln -s gfortran "$pkgdir/usr/bin/f95"
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_gcc-objc-git(){
+  pkgdesc='Objective-C front-end for GCC (git version)'
+  depends=("gcc=$pkgver-$pkgrel")
+  provides=(gcc-objc-multilib gcc-objc "gcc-objc=${pkgver}-${pkgrel}" "gcc-objc-mutilib=${pkgver}-${pkgrel}"
+            gcc-objc-git gcc-fortran-objc-git "gcc-objc-git=${pkgver}-${pkgrel}" "gcc-objc-mutilib-git=${pkgver}-${pkgrel}")
+  replaces=(gcc-objc-multilib)
+  conflicts=(gcc-objc)
+
+  cd ${srcdir}/gcc-build
+  make -j$(nproc) DESTDIR="$pkgdir" -C $CHOST/libobjc install-headers
+  install -dm755 "$pkgdir/${_libdir}"
+  install -m755 gcc/cc1obj{,plus} "$pkgdir/${_libdir}/"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"

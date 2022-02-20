@@ -19,7 +19,7 @@ echo "${source}"
 
 # prepare
 
-# makepkg --verifysource to grap same same git version for package
+# makepkg --verifysource to grap same version for package stage1/stage2 build
 
 cd glibc && makepkg --verifysource && cd ${source}
 

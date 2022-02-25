@@ -57,8 +57,6 @@ prepare(){
 build(){
   local _configure_flags=(
       --prefix=/usr \
-      --libdir=/usr/lib \
-      --libexecdir=/usr/lib \
       --with-headers=/usr/include \
       --with-bugurl=https://bugs.archlinux.org/
       --enable-bind-now \

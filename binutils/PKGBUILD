@@ -94,6 +94,9 @@ check(){
 package(){
   cd ${srcdir}/binutils-build
   make -j$(nproc) prefix="$pkgdir/usr" tooldir="$pkgdir/usr" install
+  
+  # install PIC version of libiberty
+  install -m644 "$srcdir"/binutils-build/libiberty/pic/libiberty.a "$pkgdir"/usr/lib
 
   # Remove unwanted files
   rm -f "$pkgdir"/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}*

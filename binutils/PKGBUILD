@@ -25,7 +25,7 @@ optdepends=('debuginfod: for debuginfod server/client functionality')
 provides=(binutils "binutils=${pkgver}" binutils-blacksky "binutils-blacksky=${pkgver}")
 conflicts=(binutils-multilib binutils)
 replaces=(binutils-multilib)
-options=(staticlibs !distcc !ccache debug)
+options=(staticlibs !distcc !ccache !debug)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz)
 md5sums=(SKIP)
 

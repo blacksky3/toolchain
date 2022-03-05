@@ -244,9 +244,10 @@ package_gcc-git(){
   make -j$(nproc) -C $CHOST/32/libsanitizer DESTDIR="$pkgdir" install-nodist_{saninclude,toolexeclib}HEADERS
   make -j$(nproc) -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
+  # don't fail if can't remove the files (when certain languages were disabled)
   make -j$(nproc) -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1 ||:
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info ||:
 
   make -j$(nproc) -C libcpp DESTDIR="$pkgdir" install
   make -j$(nproc) -C gcc DESTDIR="$pkgdir" install-po

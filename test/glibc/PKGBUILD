@@ -165,7 +165,7 @@ check(){
   make -j$(nproc) -O check
 }
 
-package_glibc(){
+package_glibc-blacksky(){
   pkgdesc='GNU C Library'
   depends=('linux-api-headers>=4.10' tzdata filesystem)
   optdepends=('gd: for memusagestat'
@@ -219,7 +219,7 @@ package_glibc(){
   install -Dm644 "$srcdir/sdt-config.h" "$pkgdir/usr/include/sys/sdt-config.h"
 }
 
-package_lib32-glibc(){
+package_lib32-glibc-blacksky(){
   pkgdesc='GNU C Library (32-bit)'
   depends=("glibc=$pkgver")
   options+=('!emptydirs')

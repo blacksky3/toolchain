@@ -17,7 +17,7 @@ pkgdesc='Kernel headers sanitized for use in userspace (git version)'
 arch=('any')
 url='https://www.gnu.org/software/libc'
 license=(GPL2)
-makedepends=(rsync)
+makedepends=(rsync git)
 conflicts=(linux-api-headers)
 provides=('linux-api-headers=$pkgver' linux-api-headers)
 source=(git+https://github.com/torvalds/linux.git)
@@ -44,5 +44,5 @@ package(){
   make -j$(nproc) INSTALL_HDR_PATH="$pkgdir/usr" headers_install
 
   # use headers from libdrm
-  #rm -r "$pkgdir/usr/include/drm"
+  rm -r "$pkgdir/usr/include/drm"
 }

@@ -15,7 +15,7 @@
 # NOTE: valgrind requires rebuilt with each major glibc version
 
 pkgbase=glibc-blacksky
-pkgname=(glibc lib32-glibc)
+pkgname=(glibc-blacksky lib32-glibc-blacksky)
 pkgver=2.35
 pkgrel=1
 arch=(x86_64)

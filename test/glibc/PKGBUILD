@@ -66,7 +66,6 @@ build(){
   local _configure_flags=(
       --prefix=/usr
       --with-headers=/usr/include
-      --with-bugurl=https://bugs.archlinux.org/
       --enable-bind-now
       --enable-cet
       --enable-kernel=4.4

@@ -93,5 +93,3 @@ cp -v gcc-git-stage2/*.pkg.tar.zst package/
 
 rm -rf */src/
 rm -rf */pkg/
-rm -rf */*/src/
-rm -rf */*/pkg/

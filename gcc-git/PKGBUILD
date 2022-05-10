@@ -27,7 +27,7 @@ makedepends=(binutils doxygen git lib32-glibc lib32-gcc-libs libisl libmpc
              libxcrypt python zstd)
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
 options=(!emptydirs !lto !debug)
-_libdir=usr/lib/gcc/$CHOST/12.0.1
+_libdir=usr/lib/gcc/$CHOST/13.0.0
 source=(git+https://github.com/gcc-mirror/gcc.git
         c89
         c99

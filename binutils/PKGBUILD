@@ -29,12 +29,10 @@ conflicts=(binutils-multilib binutils)
 replaces=(binutils-multilib)
 options=(staticlibs !distcc !ccache !debug)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz
-        gold-warn-unsupported.patch
-        fix-incorrect-undefined-symbol.patch)
+        gold-warn-unsupported.patch)
 
 sha256sums=(e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024
-            2d430b66f84a19c154725ec535280c493be1d34f1a90f95208dce02fecd0e4e4
-            fd33b2f8cac7561cecf3fdbb5a50fd2f2dfa6420516cbe57c47784a06fa16bf6)
+            2d430b66f84a19c154725ec535280c493be1d34f1a90f95208dce02fecd0e4e4)
 
 prepare(){
   [[ ! -d binutils-gdb ]] && ln -s binutils-$pkgver binutils-gdb
@@ -50,10 +48,6 @@ prepare(){
   # unsupported targets.  This allows the binutils to be built with
   # BPF support enabled.
   patch -Np1 -i "${srcdir}"/gold-warn-unsupported.patch
-
-  # fix incorrect "undefined reference" errors
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=28879
-  patch -Np1 -i "${srcdir}"/fix-incorrect-undefined-symbol.patch
 }
 
 build(){

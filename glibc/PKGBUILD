@@ -32,7 +32,8 @@ source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz
         sdt.h sdt-config.h
         disable-clone3.diff
         0001-localedef-Update-LC_MONETARY-handling-Bug-28845.patch
-        0001-localedata-Do-not-generate-output-if-warnings-were-p.patch)
+        0001-localedata-Do-not-generate-output-if-warnings-were-p.patch
+        0001-elf-Fix-DFS-sorting-algorithm-for-LD_TRACE_LOADED_OB.patch)
 
 sha256sums=(5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e
             d42648cea552ba5353a32e264686e992263289d5cc86207314dffc54ab514981

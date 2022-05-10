@@ -16,7 +16,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git lib32-gcc-libs-git)
-pkgver=12.0.1
+pkgver=13.0.0
 _islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'

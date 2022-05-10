@@ -84,8 +84,7 @@ build() {
       --disable-libstdcxx-pch \
       --disable-werror \
       --with-build-config=bootstrap-lto \
-      --enable-link-serialization=1 \
-      gdc_include_dir=/usr/include/dlang/gdc"
+      --enable-link-serialization=1"
 
   cd ${srcdir}/gcc-build
 
@@ -132,7 +131,7 @@ package_gcc-libs-git(){
   provides=(libgfortran.so libubsan.so libasan.so libtsan.so liblsan.so
             gcc-libs gcc-libs-multilib "gcc-libs=${pkgver}-${pkgrel}" "gcc-libs-multilib=${pkgver}-${pkgrel}"
             gcc-libs-git "gcc-libs-git=${pkgver}-${pkgrel}" "gcc-libs-multilib=${pkgver}-${pkgrel}")
-  replaces=(libgphobos gcc-libs-multilib)
+  replaces=(gcc-libs-multilib)
   conflicts=(gcc-libs)
 
   cd ${srcdir}/gcc-build
@@ -225,8 +224,8 @@ package_gcc-git(){
 
   # don't fail if can't remove the files (when certain languages were disabled)
   make -j$(nproc) -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1 ||:
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info ||:
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran}.1 ||:
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn}.info ||:
 
   make -j$(nproc) -C libcpp DESTDIR="$pkgdir" install
   make -j$(nproc) -C gcc DESTDIR="$pkgdir" install-po

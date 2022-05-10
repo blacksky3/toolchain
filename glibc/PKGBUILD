@@ -35,16 +35,6 @@ source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz
         0001-localedata-Do-not-generate-output-if-warnings-were-p.patch
         0001-elf-Fix-DFS-sorting-algorithm-for-LD_TRACE_LOADED_OB.patch)
 
-sha256sums=(5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e
-            d42648cea552ba5353a32e264686e992263289d5cc86207314dffc54ab514981
-            83f108f915863c7ed0338e2d3e8f2e071a531a090ef8f8b2eb3a956a3c4f04d7
-            c27424154a6096ae32c0824b785e05de6acef33d9224fd6147d1936be9b4962b
-            774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70
-            cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0
-            f5df8fc95592cce7825744aeb8c9699a5b4b5b7ccf7bcf554355167c3a7e375e
-            0fbfee1dbe867c1e1d135d3bdc6fbe32d5629aa5eff555123355d21341271a82
-            2a3da2150c45d2ee811d6e837838029927eb40e50c901452e155545fa5144c54)
-
 prepare(){
   mkdir -p glibc-build lib32-glibc-build
 
@@ -254,3 +244,13 @@ package_lib32-glibc-blacksky(){
       -name '*.so*' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
   fi
 }
+sha256sums=('5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
+            'd42648cea552ba5353a32e264686e992263289d5cc86207314dffc54ab514981'
+            '83f108f915863c7ed0338e2d3e8f2e071a531a090ef8f8b2eb3a956a3c4f04d7'
+            'c27424154a6096ae32c0824b785e05de6acef33d9224fd6147d1936be9b4962b'
+            '774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70'
+            'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0'
+            'f5df8fc95592cce7825744aeb8c9699a5b4b5b7ccf7bcf554355167c3a7e375e'
+            '0fbfee1dbe867c1e1d135d3bdc6fbe32d5629aa5eff555123355d21341271a82'
+            '2a3da2150c45d2ee811d6e837838029927eb40e50c901452e155545fa5144c54'
+            '85e19a5bb247a7c523781efb28509420a67f32bae0c13633c1c22dc921187840')

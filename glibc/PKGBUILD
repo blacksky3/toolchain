@@ -51,6 +51,10 @@ prepare(){
   # https://bugs.archlinux.org/task/73797
   patch -Np1 -i "${srcdir}"/0001-localedef-Update-LC_MONETARY-handling-Bug-28845.patch
   patch -Np1 -i "${srcdir}"/0001-localedata-Do-not-generate-output-if-warnings-were-p.patch
+  
+  # Fix Sefault introduced by new DFS algorithm
+  # https://bugs.archlinux.org/task/73938
+  patch -Np1 -i "${srcdir}"/0001-elf-Fix-DFS-sorting-algorithm-for-LD_TRACE_LOADED_OB.patch
 }
 
 build(){

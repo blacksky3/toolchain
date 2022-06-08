@@ -206,7 +206,7 @@ package_lib32-glibc-blacksky(){
 
   cd ${srcdir}/lib32-glibc-build
 
-  make install_root="$pkgdir" install
+  make -j$(nproc) install_root="$pkgdir" install
   rm -rf "$pkgdir"/{etc,sbin,usr/{bin,sbin,share},var}
 
   # We need to keep 32 bit specific header files

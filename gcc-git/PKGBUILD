@@ -166,7 +166,6 @@ package_gcc-libs-git(){
 package_gcc-git(){
   pkgdesc='The GNU Compiler Collection - C and C++ frontends (git version)'
   depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc zstd libisl.so)
-  groups=(base-devel)
   optdepends=('lib32-gcc-libs: for generating code for 32-bit ABI')
   provides=(gcc gcc-multilib "gcc=${pkgver}-${pkgrel}" "gcc-multilib=${pkgver}-${pkgrel}"
             gcc-git gcc-multilib-git "gcc-git=${pkgver}-${pkgrel}" "gcc-mutilib-git=${pkgver}-${pkgrel}")
@@ -282,7 +281,6 @@ package_lib32-gcc-libs-git(){
   provides=(libgfortran.so libubsan.so libasan.so lib32-gcc-libs "lib32-gcc-libs=${pkgver}-${pkgrel}"
             lib32-gcc-libs-git "lib32-gcc-libs-git=${pkgver}-${pkgrel}")
   conflicts=(lib32-gcc-libs)
-  groups=(multilib-devel)
   options=(!emptydirs !strip)
 
   cd ${srcdir}/gcc-build

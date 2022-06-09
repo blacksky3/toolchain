@@ -17,7 +17,6 @@
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git lib32-gcc-libs-git)
 pkgver=13.0.0
-_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)

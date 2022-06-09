@@ -13,6 +13,7 @@
 
 pkgname=linux-api-headers-git
 pkgver=5.19
+_commit=f2906aa863381afb0015a9eb7fefad885d4e5a56
 major=5.19
 pkgrel=1
 pkgdesc='Kernel headers sanitized for use in userspace (git version)'
@@ -22,7 +23,7 @@ license=(GPL2)
 makedepends=(rsync git)
 conflicts=(linux-api-headers)
 provides=('linux-api-headers=$pkgver' linux-api-headers)
-source=(git+https://github.com/torvalds/linux.git)
+source=(git+https://github.com/torvalds/linux.git#commit=$_commit)
 md5sums=(SKIP)
 
 pkgver(){

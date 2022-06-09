@@ -17,6 +17,7 @@
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git lib32-gcc-libs-git)
 pkgver=13.0.0
+_commit=02b4e2de3204e74ce06d2d46bc8ee30ac93ce9fb
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
@@ -27,7 +28,7 @@ makedepends=(binutils doxygen git lib32-glibc lib32-gcc-libs libisl libmpc
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
 options=(!emptydirs !lto !debug)
 _libdir=usr/lib/gcc/$CHOST/13.0.0
-source=(git+https://github.com/gcc-mirror/gcc.git
+source=(git+https://github.com/gcc-mirror/gcc.git#commit=$_commit
         c89
         c99
         fix-testsuite-default-pie.diff)

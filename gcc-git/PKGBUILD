@@ -53,7 +53,7 @@ prepare(){
 }
 
 build() {
-  local _confflags=(
+  local _conflags=(
       --prefix=/usr
       --libdir=/usr/lib
       --libexecdir=/usr/lib

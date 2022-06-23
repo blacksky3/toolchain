@@ -17,7 +17,7 @@
 pkgbase=glibc-blacksky
 pkgname=(glibc-blacksky lib32-glibc-blacksky)
 pkgver=2.35
-_commit=99978cd42c55ee427fb512de69638045f6d525c7
+_commit=b6aade18a7e5719c942aa2da6cf3157aca993fa4
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'

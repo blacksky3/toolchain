@@ -15,7 +15,7 @@
 
 pkgname=binutils-blacksky
 pkgver=2.38
-_commit=0dae8bed68e5350f69cb6aa3ee5261754510e1df
+_commit=eed56ee299b9ef8754bb4e53f2e9cf2a7c28c04d
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files'
 arch=(x86_64)

@@ -222,6 +222,7 @@ package_lib32-glibc-blacksky(){
   # Symlink /usr/lib32/locale to /usr/lib/locale
   ln -s ../lib/locale "$pkgdir/usr/lib32/locale"
 }
+
 sha256sums=('SKIP'
             'd42648cea552ba5353a32e264686e992263289d5cc86207314dffc54ab514981'
             '8c5cc09018cbd65e8570430f872e118caa2644e311d6200b7d5f0cba837fbba4'

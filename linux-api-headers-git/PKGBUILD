@@ -24,7 +24,7 @@ makedepends=(rsync git)
 conflicts=(linux-api-headers)
 provides=('linux-api-headers=$pkgver' linux-api-headers)
 source=(git+https://github.com/torvalds/linux.git#commit=$_commit)
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver(){
   cd linux

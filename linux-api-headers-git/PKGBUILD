@@ -13,7 +13,7 @@
 
 pkgname=linux-api-headers-git
 pkgver=5.19
-_commit=de5c208d533a46a074eb46ea17f672cc005a7269
+_commit=69cb6c6556ad89620547318439d6be8bb1629a5a
 major=5.19
 pkgrel=1
 pkgdesc='Kernel headers sanitized for use in userspace (git version)'
@@ -24,7 +24,6 @@ makedepends=(rsync git)
 conflicts=(linux-api-headers)
 provides=('linux-api-headers=$pkgver' linux-api-headers)
 source=(git+https://github.com/torvalds/linux.git#commit=$_commit)
-md5sums=('SKIP')
 
 pkgver(){
   cd linux
@@ -46,3 +45,5 @@ package(){
   # use headers from libdrm
   #rm -r "$pkgdir/usr/include/drm"
 }
+
+sha256sums=('SKIP')

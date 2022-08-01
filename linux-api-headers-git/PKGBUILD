@@ -13,7 +13,7 @@
 
 pkgname=linux-api-headers-git
 pkgver=5.19
-_commit=69cb6c6556ad89620547318439d6be8bb1629a5a
+_commit=3d7cb6b04c3f3115719235cc6866b10326de34cd
 major=5.19
 pkgrel=1
 pkgdesc='Kernel headers sanitized for use in userspace (git version)'
